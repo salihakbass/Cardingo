@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.chooselanguage.ChooseLanguageFragment">
+
+    <TextView
+        android:id="@+id/tv_choose_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/choose_language_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_choose_language" />
+
+    <ImageView
+        android:id="@+id/ivEnglish"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/english"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/ivGerman"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/deutsch"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/tvEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="English (UK)"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivEnglish"
+        app:layout_constraintStart_toStartOf="@+id/ivEnglish"
+        app:layout_constraintTop_toBottomOf="@+id/ivEnglish" />
+
+    <TextView
+        android:id="@+id/tvGerman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="German"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivGerman"
+        app:layout_constraintStart_toStartOf="@+id/ivGerman"
+        app:layout_constraintTop_toBottomOf="@+id/ivGerman" />
+
+    <ImageView
+        android:id="@+id/ivFrench"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/french"
+        app:layout_constraintEnd_toEndOf="@+id/ivEnglish"
+        app:layout_constraintStart_toStartOf="@+id/ivEnglish"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnglish" />
+
+    <TextView
+        android:id="@+id/tvFrench"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="French"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivFrench"
+        app:layout_constraintStart_toStartOf="@+id/ivFrench"
+        app:layout_constraintTop_toBottomOf="@+id/ivFrench" />
+
+    <ImageView
+        android:id="@+id/ivSpanish"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/spanishh"
+        app:layout_constraintEnd_toEndOf="@+id/ivGerman"
+        app:layout_constraintStart_toStartOf="@+id/ivGerman"
+        app:layout_constraintTop_toBottomOf="@+id/tvGerman" />
+
+    <TextView
+        android:id="@+id/tvSpanish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Spanish"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivSpanish"
+        app:layout_constraintStart_toStartOf="@+id/ivSpanish"
+        app:layout_constraintTop_toBottomOf="@+id/ivSpanish" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
