@@ -23,13 +23,15 @@ class ChooseLevelFragment : Fragment() {
 
         val sharedPreferences = requireContext().getSharedPreferences("SelectedLevel", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
+        val languagePreferences = requireContext().getSharedPreferences("SelectedLanguage", Context.MODE_PRIVATE)
+        val selectedLanguage = languagePreferences.getString("language", "English")
 
         binding.btnAFirst.setOnClickListener {
             // Seçilen seviyeyi kaydet
             editor.putString("level", "A1")
             editor.apply()
 
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("A1")
+            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("A1","$selectedLanguage")
             findNavController().navigate(action)
         }
 
@@ -37,7 +39,7 @@ class ChooseLevelFragment : Fragment() {
             editor.putString("level", "A2")
             editor.apply()
 
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("A2")
+            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("A2","$selectedLanguage")
             findNavController().navigate(action)
         }
 
@@ -45,7 +47,7 @@ class ChooseLevelFragment : Fragment() {
             editor.putString("level", "B1")
             editor.apply()
 
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("B1")
+            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("B1","$selectedLanguage")
             findNavController().navigate(action)
         }
 
@@ -53,7 +55,7 @@ class ChooseLevelFragment : Fragment() {
             editor.putString("level", "B2")
             editor.apply()
 
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("B2")
+            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("B2","$selectedLanguage")
             findNavController().navigate(action)
         }
 
@@ -61,7 +63,7 @@ class ChooseLevelFragment : Fragment() {
             editor.putString("level", "C1")
             editor.apply()
 
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("C1")
+            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("C1","$selectedLanguage")
             findNavController().navigate(action)
         }
 
@@ -69,7 +71,7 @@ class ChooseLevelFragment : Fragment() {
             editor.putString("level", "C2")
             editor.apply()
 
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("C2")
+            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("C2","$selectedLanguage")
             findNavController().navigate(action)
         }
         return binding.root
