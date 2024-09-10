@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.chooselevel.ChooseLevelFragment">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/c"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAFirst"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#45c3f2"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:text="A1"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnASecond"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        android:backgroundTint="#a96052"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:text="A2"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBFirst"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#68b1e0"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:text="B1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnAFirst"
+        app:layout_constraintStart_toStartOf="@+id/btnAFirst"
+        app:layout_constraintTop_toBottomOf="@+id/btnAFirst" />
+
+    <Button
+        android:id="@+id/btnBSecond"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#db722f"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:text="B2"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnASecond"
+        app:layout_constraintStart_toStartOf="@+id/btnASecond"
+        app:layout_constraintTop_toBottomOf="@+id/btnASecond" />
+
+    <Button
+        android:id="@+id/btnCFirst"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#375bea"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:text="C1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnBFirst"
+        app:layout_constraintStart_toStartOf="@+id/btnBFirst"
+        app:layout_constraintTop_toBottomOf="@+id/btnBFirst" />
+
+    <Button
+        android:id="@+id/btnCSecond"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#d48340"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:text="C2"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/btnBSecond"
+        app:layout_constraintStart_toStartOf="@+id/btnBSecond"
+        app:layout_constraintTop_toBottomOf="@+id/btnBSecond" />
+</androidx.constraintlayout.widget.ConstraintLayout>
