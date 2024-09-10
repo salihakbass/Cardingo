@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.cardingo.ui.fragment.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_chooseLanguageFragment"
+            app:destination="@id/chooseLanguageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabAFragment"
+        android:name="com.example.cardingo.ui.fragment.splash.TabAFragment"
+        android:label="fragment_tab_a"
+        tools:layout="@layout/fragment_tab_a" />
+    <fragment
+        android:id="@+id/tabBFragment"
+        android:name="com.example.cardingo.ui.fragment.splash.TabBFragment"
+        android:label="fragment_tab_b"
+        tools:layout="@layout/fragment_tab_b" />
+    <fragment
+        android:id="@+id/tabCFragment"
+        android:name="com.example.cardingo.ui.fragment.splash.TabCFragment"
+        android:label="fragment_tab_c"
+        tools:layout="@layout/fragment_tab_c" />
+    <fragment
+        android:id="@+id/chooseLanguageFragment"
+        android:name="com.example.cardingo.ui.fragment.chooselanguage.ChooseLanguageFragment"
+        android:label="fragment_choose_language"
+        tools:layout="@layout/fragment_choose_language" >
+        <action
+            android:id="@+id/action_chooseLanguageFragment_to_chooseLevelFragment"
+            app:destination="@id/chooseLevelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLevelFragment"
+        android:name="com.example.cardingo.ui.fragment.chooselevel.ChooseLevelFragment"
+        android:label="fragment_choose_level"
+        tools:layout="@layout/fragment_choose_level" >
+        <action
+            android:id="@+id/action_chooseLevelFragment_to_wordsFragment"
+            app:destination="@id/wordsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordsFragment"
+        android:name="com.example.cardingo.ui.fragment.words.WordsFragment"
+        android:label="fragment_words"
+        tools:layout="@layout/fragment_words" >
+        <argument
+            android:name="level"
+            app:argType="string" />
+        <argument
+            android:name="language"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/learnedFragment"
+        android:name="com.example.cardingo.ui.fragment.learned.LearnedFragment"
+        android:label="fragment_learned"
+        tools:layout="@layout/fragment_learned" />
+</navigation>
