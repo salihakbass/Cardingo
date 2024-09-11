@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_margin="7dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="#E6C0C0"
-        android:layout_margin="10dp">
+        android:backgroundTint="#CFFFCF">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -45,24 +45,34 @@
                 android:id="@+id/tvWordTurkishLearned"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:text="Elma"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/tvWordLearned"
-                app:layout_constraintStart_toStartOf="@+id/tvWordLearned"
-                app:layout_constraintTop_toBottomOf="@+id/tvWordLearned" />
+                app:layout_constraintEnd_toEndOf="@+id/ivCountry"
+                app:layout_constraintStart_toStartOf="@+id/ivCountry"
+                app:layout_constraintTop_toBottomOf="@+id/ivCountry" />
 
             <Button
                 android:id="@+id/btnUnlearned"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:backgroundTint="#ED0000"
+                android:backgroundTint="#FF5151"
                 android:text="UNLEARNED"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivCountry"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvWordLearned"
+                app:layout_constraintStart_toStartOf="@+id/tvWordLearned"
+                app:layout_constraintTop_toBottomOf="@+id/tvWordLearned"
+                app:srcCompat="@drawable/english" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
