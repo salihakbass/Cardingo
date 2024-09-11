@@ -13,7 +13,7 @@ class LearnedAdapter(
     inner class ViewHolder(private val binding: LearnedViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Words, position: Int) {
+        fun bind(item: Words) {
             val resourceId = itemView.context.resources.getIdentifier(item.image, "drawable", itemView.context.packageName)
             val resourceIdCountry = itemView.context.resources.getIdentifier(item.country, "drawable", itemView.context.packageName)
             with(binding) {
@@ -23,7 +23,6 @@ class LearnedAdapter(
                 ivCountry.setImageResource(resourceIdCountry)
                 btnUnlearned.setOnClickListener {
                     onRemoveClick?.invoke(item)
-                    removeItemWithAnimation(this@ViewHolder, position)
                 }
             }
         }
@@ -39,19 +38,8 @@ class LearnedAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(itemsList[position], position)
+        holder.bind(itemsList[position])
     }
 
-    private fun removeItemWithAnimation(viewHolder: ViewHolder, position: Int) {
-        val itemView = viewHolder.itemView
-        itemView.animate()
-            .translationX(-itemView.width.toFloat())
-            .alpha(0.0f)
-            .setDuration(300)
-            .withEndAction {
-                itemsList.removeAt(position)
-                notifyItemRemoved(position)
-                notifyItemRangeChanged(position, itemsList.size - position)
-            }
-    }
+
 }
