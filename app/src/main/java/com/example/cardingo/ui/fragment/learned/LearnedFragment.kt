@@ -77,14 +77,6 @@ class LearnedFragment : Fragment() {
         learnedAdapter.notifyDataSetChanged()
     }
 
-    private fun isEmpty() {
-        if (learnedAdapter.itemCount == 0) {
-            binding.rvLearned.visibility = View.GONE
-            binding.lottieLayout.visibility = View.VISIBLE
-        } else {
-            binding.rvLearned.visibility = View.VISIBLE
-            binding.lottieLayout.visibility = View.GONE
-        }
-    }
+
 
 }
