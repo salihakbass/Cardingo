@@ -41,11 +41,9 @@ class LearnedFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         learnedAdapter = LearnedAdapter(savedWordsList) { selectedWord ->
             removeWordFromSharedPreferences(selectedWord)
-            isEmpty()
         }
         recyclerView.adapter = learnedAdapter
 
-        isEmpty()
 
     }
 
