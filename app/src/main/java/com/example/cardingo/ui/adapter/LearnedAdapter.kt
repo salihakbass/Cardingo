@@ -12,11 +12,15 @@ class LearnedAdapter(
 ) : RecyclerView.Adapter<LearnedAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: LearnedViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: Words, position: Int) {
+            val resourceId = itemView.context.resources.getIdentifier(item.image, "drawable", itemView.context.packageName)
+            val resourceIdCountry = itemView.context.resources.getIdentifier(item.country, "drawable", itemView.context.packageName)
             with(binding) {
-                ivWordLearned.setImageResource(item.image)
+                ivWordLearned.setImageResource(resourceId)
                 tvWordLearned.text = item.word + "(${item.level})"
                 tvWordTurkishLearned.text = item.turkishWord
+                ivCountry.setImageResource(resourceIdCountry)
                 btnUnlearned.setOnClickListener {
                     onRemoveClick?.invoke(item)
                     removeItemWithAnimation(this@ViewHolder, position)
