@@ -64,8 +64,9 @@ class WordsAdapter(
             saveWordToSharedPreferences(word)
             animateRemoval(view, position)
             popupWindow.dismiss()
+            notifyDataSetChanged()
         }
-        popupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 0, -650)
+        popupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 600, -900)
     }
 
     private fun createPopupWindow(popupBinding: PopupLayoutBinding): PopupWindow {
