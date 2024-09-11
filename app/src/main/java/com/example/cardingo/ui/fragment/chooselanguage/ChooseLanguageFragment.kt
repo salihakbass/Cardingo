@@ -35,7 +35,7 @@ class ChooseLanguageFragment : Fragment() {
             findNavController().navigate(action)
         }
         binding.ivSpanish.setOnClickListener {
-            editor.putString("language", "Spanish")
+            editor.putString("language", "Español")
             editor.apply()
 
             val action =
@@ -43,7 +43,7 @@ class ChooseLanguageFragment : Fragment() {
             findNavController().navigate(action)
         }
         binding.ivFrench.setOnClickListener {
-            editor.putString("language", "French")
+            editor.putString("language", "Français")
             editor.apply()
 
             val action =
@@ -51,7 +51,7 @@ class ChooseLanguageFragment : Fragment() {
             findNavController().navigate(action)
         }
         binding.ivGerman.setOnClickListener {
-            editor.putString("language", "German")
+            editor.putString("language", "Deutsch")
             editor.apply()
 
             val action =
