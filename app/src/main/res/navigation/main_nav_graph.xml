@@ -58,6 +58,12 @@
         <argument
             android:name="language"
             app:argType="string" />
+        <action
+            android:id="@+id/action_wordsFragment_to_chooseLevelFragment"
+            app:destination="@id/chooseLevelFragment" />
+        <action
+            android:id="@+id/action_wordsFragment_to_chooseLanguageFragment"
+            app:destination="@id/chooseLanguageFragment" />
     </fragment>
     <fragment
         android:id="@+id/learnedFragment"
