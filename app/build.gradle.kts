@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -48,7 +49,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
+    implementation (libs.gson)
+    implementation (libs.androidx.swiperefreshlayout)
+    implementation (libs.lottie)
     implementation(libs.androidx.viewpager2)
     implementation(libs.dotsindicator)
     implementation(libs.androidx.navigation.fragment)
