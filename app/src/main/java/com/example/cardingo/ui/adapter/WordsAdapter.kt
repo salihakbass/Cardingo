@@ -71,7 +71,7 @@ class WordsAdapter(
 
         popupBinding.btnAdd.setOnClickListener {
             saveWordToSharedPreferences(word)
-            animateRemoval(view, position)
+            removeItem(position)
             popupWindow.dismiss()
             notifyDataSetChanged()
         }
@@ -108,17 +108,4 @@ class WordsAdapter(
         }
     }
 
-    private fun animateRemoval(view: View, position: Int) {
-        view.animate()
-            .translationY(-view.height.toFloat())
-            .alpha(0.0f)
-            .setDuration(300)
-            .withEndAction {
-                removeItem(position)
-            }
-    }
-    fun setData(newWordsList: MutableList<Words>) {
-        wordList = newWordsList
-        notifyDataSetChanged() // Veriyi güncelledikten sonra adaptörü yeniden render et
-    }
 }
