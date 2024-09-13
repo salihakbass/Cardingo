@@ -60,14 +60,19 @@ class WordsAdapter(
         val popupBinding = PopupLayoutBinding.inflate(LayoutInflater.from(view.context))
         val popupWindow = createPopupWindow(popupBinding)
 
-        val location = IntArray(2)
-        binding.tvEnglishWord.getLocationOnScreen(location)
+        val ımageResource = view.context.resources.getIdentifier(
+            word.image,
+            "drawable",
+            view.context.packageName
+        )
+        popupBinding.popupImage.setImageResource(ımageResource)
+        popupBinding.tvWord.text = word.word
+        popupBinding.tvTurkishWord.text = word.turkishWord
 
-        val xOffSet = location[0]
-        val yOffSet = location[1] - popupWindow.height
 
-        val xAdjustment = -50
-        val yAdjustment = -180
+
+
+
 
         popupBinding.btnAdd.setOnClickListener {
             saveWordToSharedPreferences(word)
@@ -75,7 +80,7 @@ class WordsAdapter(
             popupWindow.dismiss()
             notifyDataSetChanged()
         }
-        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, xOffSet + xAdjustment, yOffSet + yAdjustment)
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
     }
 
     private fun createPopupWindow(popupBinding: PopupLayoutBinding): PopupWindow {

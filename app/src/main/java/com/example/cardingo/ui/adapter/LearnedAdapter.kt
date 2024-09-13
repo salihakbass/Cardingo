@@ -70,6 +70,16 @@ class LearnedAdapter(
         val popupBinding = PopupDeleteBinding.inflate(LayoutInflater.from(view.context))
         val popupWindow = createPopupWindow(popupBinding)
 
+        val ımageResource = view.context.resources.getIdentifier(
+            word.image,
+            "drawable",
+            view.context.packageName
+        )
+
+        popupBinding.popupImage.setImageResource(ımageResource)
+        popupBinding.tvWord.text = word.word
+        popupBinding.tvTurkishWord.text = word.turkishWord
+
 
         popupBinding.btnAdd.setOnClickListener {
             removeWordFromSharedPreferences(word)
