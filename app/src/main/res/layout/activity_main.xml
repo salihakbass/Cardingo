@@ -34,6 +34,7 @@
                 android:layout_margin="4dp"
                 android:visibility="invisible"
                 app:labelVisibilityMode="labeled"
+                android:background="@drawable/bg_bottom_nav"
                 app:menu="@menu/bottom_nav_menu" />
 
 
