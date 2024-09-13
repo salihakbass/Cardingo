@@ -7,4 +7,21 @@
     <string name="words_text">Words</string>
     <string name="welcome_app_text">Cardingo\'ya Hoşgeldiniz</string>
     <string name="welcome_desc_text">Cardingo ile birbirinden farklı dillerde kelimeler öğrenebilirsiniz.</string>
+    <string name="tabb_desc_text">Uygulamanın açılış ekranında dil seçimi ve ardından gelecek olan ekranda hangi seviyede kelimeleri görmek istediğinizi seçebilirsiniz.</string>
+    <string name="lets_start_text">Haydi Başlayalım</string>
+    <string name="tabc_desc_text">Öğrendiğiniz kelimenin üzerine tıklayarak açılan pencereden Learn butonuna basarak kelimeyi kaydedebilir ve daha sonra kaydettiğiniz kelimeye erişebilirsiniz</string>
+    <string name="english_uk_text">English (UK)</string>
+    <string name="german_text">German</string>
+    <string name="french_text">French</string>
+    <string name="spanish_text">Spanish</string>
+    <string name="beginner_text">Beginner</string>
+    <string name="upper_intermediate_text">Upper Intermediate</string>
+    <string name="a1_text">A1</string>
+    <string name="a2_text">A2</string>
+    <string name="b1_text">B1</string>
+    <string name="b2_text">B2</string>
+    <string name="elementary_text">Elementary</string>
+    <string name="intermadiate_text">Intermadiate</string>
+    <string name="change_language_text">Change Language</string>
+    <string name="change_level_text">Change Level</string>
 </resources>
