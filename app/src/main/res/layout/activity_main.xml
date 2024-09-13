@@ -32,9 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_margin="4dp"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:labelVisibilityMode="labeled"
-                android:background="@drawable/bg_bottom_nav"
+                android:background="@drawable/gradient_background"
                 app:menu="@menu/bottom_nav_menu" />
 
 
