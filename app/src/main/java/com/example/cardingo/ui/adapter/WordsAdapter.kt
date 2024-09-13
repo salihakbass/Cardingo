@@ -51,14 +51,23 @@ class WordsAdapter(
             imgCountry.setImageResource(resourceIdCountry)
 
             tvEnglishWord.setOnClickListener {
-                showPopUp(holder.itemView, item, position)
+                showPopUp(holder.itemView, item, position,binding)
             }
         }
     }
 
-    private fun showPopUp(view: View, word: Words, position: Int) {
+    private fun showPopUp(view: View, word: Words, position: Int,binding: MainSliderViewBinding) {
         val popupBinding = PopupLayoutBinding.inflate(LayoutInflater.from(view.context))
         val popupWindow = createPopupWindow(popupBinding)
+
+        val location = IntArray(2)
+        binding.tvEnglishWord.getLocationOnScreen(location)
+
+        val xOffSet = location[0]
+        val yOffSet = location[1] - popupWindow.height
+
+        val xAdjustment = -50
+        val yAdjustment = -180
 
         popupBinding.btnAdd.setOnClickListener {
             saveWordToSharedPreferences(word)
@@ -66,7 +75,7 @@ class WordsAdapter(
             popupWindow.dismiss()
             notifyDataSetChanged()
         }
-        popupWindow.showAtLocation(view, Gravity.CENTER_VERTICAL, 600, -900)
+        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, xOffSet + xAdjustment, yOffSet + yAdjustment)
     }
 
     private fun createPopupWindow(popupBinding: PopupLayoutBinding): PopupWindow {
