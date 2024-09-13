@@ -117,4 +117,8 @@ class WordsAdapter(
                 removeItem(position)
             }
     }
+    fun setData(newWordsList: MutableList<Words>) {
+        wordList = newWordsList
+        notifyDataSetChanged() // Veriyi güncelledikten sonra adaptörü yeniden render et
+    }
 }

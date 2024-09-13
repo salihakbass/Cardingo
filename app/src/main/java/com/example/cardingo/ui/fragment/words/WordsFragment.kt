@@ -8,12 +8,14 @@ import com.google.gson.reflect.TypeToken
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.cardingo.MainActivity
 import com.example.cardingo.R
 import com.example.cardingo.data.entity.Words
 import com.example.cardingo.databinding.FragmentWordsBinding
 import com.example.cardingo.ui.adapter.WordsAdapter
+import com.example.cardingo.ui.viewmodel.MainViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import java.io.InputStreamReader
@@ -21,6 +23,7 @@ import java.io.InputStreamReader
 
 class WordsFragment : Fragment() {
     private lateinit var binding: FragmentWordsBinding
+    private val viewModel: MainViewModel by viewModels()
     private var list = ArrayList<Words>()
     private lateinit var bottomNav: BottomNavigationView
     private lateinit var sharedPreferences: SharedPreferences
@@ -31,6 +34,7 @@ class WordsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentWordsBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -71,15 +75,38 @@ class WordsFragment : Fragment() {
 
         val mutableList = filteredWordList.toMutableList()
 
+
         val adapter = WordsAdapter(mutableList, sharedPreferences)
         binding.vpSlider.adapter = adapter
 
-
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            mutableList.shuffle()
-            binding.swipeRefreshLayout.isRefreshing = false
-            adapter.notifyDataSetChanged()
+        // İlk açılışta shuffle edilmiş listeyi kontrol et
+        if (viewModel.shuffledData.value == null || viewModel.shuffledData.value!!.isEmpty()) {
+            // Eğer ViewModel'de shuffle edilmiş veri yoksa, shuffle et ve kaydet
+            val shuffledList = mutableList.shuffled()
+            viewModel.shuffledData.value = shuffledList // Shuffle edilmiş veriyi ViewModel'e kaydet
+            adapter.setData(shuffledList.toMutableList()) // Adapter'a yeni veriyi ata
+        } else {
+            // ViewModel'deki shuffle edilmiş veriyi kullan
+            adapter.setData(viewModel.shuffledData.value!!.toMutableList())
         }
+
+        // Swipe-to-refresh ile shuffle işlemi
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            val shuffledList = mutableList.shuffled()
+            viewModel.shuffledData.value = shuffledList // Shuffle edilmiş veriyi ViewModel'e kaydet
+            val shuffledMutableList = shuffledList.toMutableList()
+            adapter.setData(shuffledMutableList) // Adapter'a yeni veriyi ata
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
+        // ViewModel'deki shuffled veriyi gözlemleyin
+        viewModel.shuffledData.observe(viewLifecycleOwner) { shuffledList ->
+            if (shuffledList != null && shuffledList.isNotEmpty()) {
+                adapter.setData(shuffledList.toMutableList())
+            }
+        }
+
+
     }
 
     private fun loadItemsFromJson(context: WordsFragment): ArrayList<Words> {
