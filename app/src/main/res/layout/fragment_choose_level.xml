@@ -6,10 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.chooselevel.ChooseLevelFragment">
 
+    <TextView
+        android:id="@+id/tvUpperIntermediate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/upper_intermediate_text"
+        app:layout_constraintEnd_toEndOf="@+id/btnBSecond"
+        app:layout_constraintStart_toStartOf="@+id/btnBSecond"
+        app:layout_constraintTop_toBottomOf="@+id/btnBSecond" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
-        android:layout_height="280dp"
+        android:layout_height="350dp"
+        android:elevation="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/c"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +38,7 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        android:text="A1"
+        android:text="@string/a1_text"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -43,7 +54,7 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        android:text="A2"
+        android:text="@string/a2_text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -58,7 +69,7 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        android:text="B1"
+        android:text="@string/b1_text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/btnAFirst"
         app:layout_constraintStart_toStartOf="@+id/btnAFirst"
@@ -74,41 +85,40 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        android:text="B2"
+        android:text="@string/b2_text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/btnASecond"
         app:layout_constraintStart_toStartOf="@+id/btnASecond"
         app:layout_constraintTop_toBottomOf="@+id/btnASecond" />
 
-    <Button
-        android:id="@+id/btnCFirst"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="64dp"
-        android:backgroundTint="#375bea"
-        android:insetLeft="0dp"
-        android:insetTop="0dp"
-        android:insetRight="0dp"
-        android:insetBottom="0dp"
-        android:text="C1"
-        android:textSize="20sp"
+    <TextView
+        android:id="@+id/tvBeginner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/beginner_text"
+        app:layout_constraintEnd_toEndOf="@+id/btnAFirst"
+        app:layout_constraintStart_toStartOf="@+id/btnAFirst"
+        app:layout_constraintTop_toBottomOf="@+id/btnAFirst" />
+
+    <TextView
+        android:id="@+id/tvElementary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/elementary_text"
+        app:layout_constraintEnd_toEndOf="@+id/btnASecond"
+        app:layout_constraintStart_toStartOf="@+id/btnASecond"
+        app:layout_constraintTop_toBottomOf="@+id/btnASecond" />
+
+    <TextView
+        android:id="@+id/tvIntermediate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/intermadiate_text"
         app:layout_constraintEnd_toEndOf="@+id/btnBFirst"
         app:layout_constraintStart_toStartOf="@+id/btnBFirst"
         app:layout_constraintTop_toBottomOf="@+id/btnBFirst" />
 
-    <Button
-        android:id="@+id/btnCSecond"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="64dp"
-        android:backgroundTint="#d48340"
-        android:insetLeft="0dp"
-        android:insetTop="0dp"
-        android:insetRight="0dp"
-        android:insetBottom="0dp"
-        android:text="C2"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnBSecond"
-        app:layout_constraintStart_toStartOf="@+id/btnBSecond"
-        app:layout_constraintTop_toBottomOf="@+id/btnBSecond" />
 </androidx.constraintlayout.widget.ConstraintLayout>

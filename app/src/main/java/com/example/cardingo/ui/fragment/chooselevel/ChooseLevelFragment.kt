@@ -58,22 +58,6 @@ class ChooseLevelFragment : Fragment() {
             val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("B2","$selectedLanguage")
             findNavController().navigate(action)
         }
-
-        binding.btnCFirst.setOnClickListener {
-            editor.putString("level", "C1")
-            editor.apply()
-
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("C1","$selectedLanguage")
-            findNavController().navigate(action)
-        }
-
-        binding.btnCSecond.setOnClickListener {
-            editor.putString("level", "C2")
-            editor.apply()
-
-            val action = ChooseLevelFragmentDirections.actionChooseLevelFragmentToWordsFragment("C2","$selectedLanguage")
-            findNavController().navigate(action)
-        }
         return binding.root
     }
 
