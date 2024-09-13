@@ -37,10 +37,10 @@ class WordsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ivChangeLanguage.setOnClickListener {
+        binding.tvChangeLanguage.setOnClickListener {
             navigateToChooseLanguageFragment()
         }
-        binding.ivChangeLevel.setOnClickListener {
+        binding.tvChangeLevel.setOnClickListener {
             navigateToChooseLevelFragment()
         }
 
