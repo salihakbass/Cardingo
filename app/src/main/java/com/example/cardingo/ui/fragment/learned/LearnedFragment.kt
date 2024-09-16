@@ -2,12 +2,19 @@ package com.example.cardingo.ui.fragment.learned
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.cardingo.R
 import com.example.cardingo.data.entity.Words
 import com.example.cardingo.databinding.FragmentLearnedBinding
 import com.example.cardingo.ui.adapter.LearnedAdapter
@@ -38,10 +45,75 @@ class LearnedFragment : Fragment() {
 
         val recyclerView = binding.rvLearned
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        learnedAdapter = LearnedAdapter(savedWordsList,sharedPreferences)
+        learnedAdapter = LearnedAdapter(savedWordsList)
         recyclerView.adapter = learnedAdapter
 
+        val itemTouchHelperCallback =
+            object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
+                }
 
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val position = viewHolder.adapterPosition
+                    val item = savedWordsList[position]
+                    removeItem(position)
+                    removeWordFromSharedPreferences(item)
+                    learnedAdapter.notifyItemChanged(position)
+                }
+
+                override fun onChildDraw(
+                    c: Canvas,
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    dX: Float,
+                    dY: Float,
+                    actionState: Int,
+                    isCurrentlyActive: Boolean
+                ) {
+
+                    val icon = ContextCompat.getDrawable(recyclerView.context, R.drawable.baseline_delete_24)
+                    val iconMargin = (viewHolder.itemView.height - icon!!.intrinsicHeight) / 2
+
+                    if (dX > 0) {
+                        val itemView = viewHolder.itemView
+                        val iconTop = itemView.top + iconMargin
+                        val iconBottom = iconTop + icon.intrinsicHeight
+                        val iconLeft = itemView.left + iconMargin
+                        val iconRight = iconLeft + icon.intrinsicWidth
+
+                        icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                        icon.draw(c)
+
+
+                        val background = ColorDrawable(Color.RED)
+                        background.setBounds(
+                            itemView.left,
+                            itemView.top,
+                            itemView.left + dX.toInt(),
+                            itemView.bottom
+                        )
+                        background.draw(c)
+                    }
+
+                    super.onChildDraw(
+                        c,
+                        recyclerView,
+                        viewHolder,
+                        dX,
+                        dY,
+                        actionState,
+                        isCurrentlyActive
+                    )
+                }
+            }
+
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     private fun loadSavedWords() {
@@ -58,6 +130,13 @@ class LearnedFragment : Fragment() {
         }
     }
 
+    private fun removeItem(position: Int) {
+        if (position in savedWordsList.indices) {
+            savedWordsList.removeAt(position)
+            learnedAdapter.notifyItemRemoved(position)
+        }
+    }
+
     private fun removeWordFromSharedPreferences(word: Words) {
         val gson = Gson()
         val json = gson.toJson(word)
@@ -70,10 +149,7 @@ class LearnedFragment : Fragment() {
         val editor = sharedPreferences.edit()
         editor.putStringSet("savedWords", savedWordsSet).apply()
 
-        savedWordsList.remove(word)
-        learnedAdapter.notifyDataSetChanged()
     }
-
 
 
 }
