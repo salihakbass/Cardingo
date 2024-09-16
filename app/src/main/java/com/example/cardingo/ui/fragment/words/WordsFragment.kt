@@ -77,16 +77,11 @@ class WordsFragment : Fragment() {
         binding.vpSlider.adapter = adapter
 
 
-
-
         binding.swipeRefreshLayout.setOnRefreshListener {
             mutableList.shuffle()
             binding.swipeRefreshLayout.isRefreshing = false
             adapter.notifyDataSetChanged()
         }
-
-
-
 
     }
 

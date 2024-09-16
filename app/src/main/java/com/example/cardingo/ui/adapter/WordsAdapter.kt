@@ -1,22 +1,15 @@
 package com.example.cardingo.ui.adapter
 
 import android.content.SharedPreferences
-import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.PopupWindow
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardingo.data.entity.Words
 import com.example.cardingo.databinding.MainSliderViewBinding
-import com.example.cardingo.databinding.PopupLayoutBinding
 import com.google.gson.Gson
 
 class WordsAdapter(
-    var wordList: MutableList<Words>,
-    private val sharedPreferences: SharedPreferences
+    private var wordList: MutableList<Words>, private val sharedPreferences: SharedPreferences
 ) : RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
     inner class ViewHolder(var binding: MainSliderViewBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -33,14 +26,10 @@ class WordsAdapter(
         val item = wordList[position]
         val binding = holder.binding
         val resourceId = holder.itemView.context.resources.getIdentifier(
-            item.image,
-            "drawable",
-            holder.itemView.context.packageName
+            item.image, "drawable", holder.itemView.context.packageName
         )
         val resourceIdCountry = holder.itemView.context.resources.getIdentifier(
-            item.country,
-            "drawable",
-            holder.itemView.context.packageName
+            item.country, "drawable", holder.itemView.context.packageName
         )
         with(binding) {
             ivWord.setImageResource(resourceId)
@@ -49,47 +38,13 @@ class WordsAdapter(
             tvSentence.text = item.sentence
             tvSentenceTurkish.text = item.turkishSentence
             imgCountry.setImageResource(resourceIdCountry)
-
-            tvEnglishWord.setOnClickListener {
-                showPopUp(holder.itemView, item, position,binding)
+            ivFavorite.setOnClickListener {
+                saveWordToSharedPreferences(item)
+                removeItem(position)
+                notifyDataSetChanged()
             }
+
         }
-    }
-
-    private fun showPopUp(view: View, word: Words, position: Int,binding: MainSliderViewBinding) {
-        val popupBinding = PopupLayoutBinding.inflate(LayoutInflater.from(view.context))
-        val popupWindow = createPopupWindow(popupBinding)
-
-        val ımageResource = view.context.resources.getIdentifier(
-            word.image,
-            "drawable",
-            view.context.packageName
-        )
-        popupBinding.popupImage.setImageResource(ımageResource)
-        popupBinding.tvWord.text = word.word
-        popupBinding.tvTurkishWord.text = word.turkishWord
-
-
-
-
-
-
-        popupBinding.btnAdd.setOnClickListener {
-            saveWordToSharedPreferences(word)
-            removeItem(position)
-            popupWindow.dismiss()
-            notifyDataSetChanged()
-        }
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
-    }
-
-    private fun createPopupWindow(popupBinding: PopupLayoutBinding): PopupWindow {
-        return PopupWindow(
-            popupBinding.root,
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            true
-        )
     }
 
     private fun saveWordToSharedPreferences(word: Words) {
@@ -105,8 +60,7 @@ class WordsAdapter(
         editor.putStringSet("savedWords", savedWords).apply()
     }
 
-
-    fun removeItem(position: Int) {
+    private fun removeItem(position: Int) {
         if (position in wordList.indices) {
             wordList.removeAt(position)
             notifyItemRemoved(position)
