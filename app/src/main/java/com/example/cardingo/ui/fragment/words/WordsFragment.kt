@@ -3,6 +3,7 @@ package com.example.cardingo.ui.fragment.words
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
 import com.google.gson.reflect.TypeToken
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.example.cardingo.ui.adapter.WordsAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import java.io.InputStreamReader
+import java.util.Locale
 
 
 class WordsFragment : Fragment() {
@@ -37,6 +39,7 @@ class WordsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         binding.tvChangeLanguage.setOnClickListener {
             navigateToChooseLanguageFragment()

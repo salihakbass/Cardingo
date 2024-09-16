@@ -38,12 +38,12 @@
                 android:id="@+id/tvTurkishWord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="32dp"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/tvEnglishWord"
                 app:layout_constraintStart_toStartOf="@+id/tvEnglishWord"
-                app:layout_constraintTop_toBottomOf="@+id/tvEnglishWord" />
+                app:layout_constraintTop_toBottomOf="@+id/ivSpeech" />
 
             <ImageView
                 android:id="@+id/ivWord"
@@ -109,6 +109,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_favorite" />
+
+            <ImageView
+                android:id="@+id/ivSpeech"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvEnglishWord"
+                app:layout_constraintStart_toStartOf="@+id/tvEnglishWord"
+                app:layout_constraintTop_toBottomOf="@+id/tvEnglishWord"
+                app:srcCompat="@drawable/ic_volume" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
