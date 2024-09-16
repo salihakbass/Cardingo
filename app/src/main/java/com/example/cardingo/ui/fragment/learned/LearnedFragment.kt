@@ -45,7 +45,7 @@ class LearnedFragment : Fragment() {
 
         val recyclerView = binding.rvLearned
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        learnedAdapter = LearnedAdapter(savedWordsList)
+        learnedAdapter = LearnedAdapter(savedWordsList,sharedPreferences)
         recyclerView.adapter = learnedAdapter
 
         val itemTouchHelperCallback =
