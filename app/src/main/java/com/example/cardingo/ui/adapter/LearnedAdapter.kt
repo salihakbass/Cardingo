@@ -11,7 +11,7 @@ import com.example.cardingo.databinding.LearnedViewBinding
 import com.google.gson.Gson
 
 class LearnedAdapter(
-    private val itemsList: MutableList<Words>, private val sharedPreferences: SharedPreferences
+    private var itemsList: MutableList<Words>, private val sharedPreferences: SharedPreferences
 ) : RecyclerView.Adapter<LearnedAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: LearnedViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -86,6 +86,12 @@ class LearnedAdapter(
         val editor = sharedPreferences.edit()
         editor.putStringSet("savedWords", savedWordsSet).apply()
 
+    }
+
+    // Listeyi güncellemek için fonksiyon
+    fun updateList(newList: MutableList<Words>) {
+        itemsList = newList
+        notifyDataSetChanged()
     }
 }
 

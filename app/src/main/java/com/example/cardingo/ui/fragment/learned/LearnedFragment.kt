@@ -18,6 +18,7 @@ import com.example.cardingo.R
 import com.example.cardingo.data.entity.Words
 import com.example.cardingo.databinding.FragmentLearnedBinding
 import com.example.cardingo.ui.adapter.LearnedAdapter
+import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
 
 
@@ -114,6 +115,35 @@ class LearnedFragment : Fragment() {
 
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    filterWordsByTab(it.text.toString())
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+        })
+        // Tab başlıklarını ekle
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Tümü"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("English"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Español"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Deutsch"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Français"))
+    }
+    // Tab'a göre filtreleme işlemi
+    private fun filterWordsByTab(language: String) {
+        val filteredWords = if (language == "Tümü") {
+            savedWordsList
+        } else {
+            savedWordsList.filter { it.language == language }
+        }
+
+        // Adapter'ı güncelle
+        learnedAdapter.updateList(filteredWords.toMutableList())
     }
 
     private fun loadSavedWords() {
