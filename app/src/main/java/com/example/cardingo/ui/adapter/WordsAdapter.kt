@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardingo.data.entity.Words
 import com.example.cardingo.databinding.MainSliderViewBinding
@@ -15,6 +16,7 @@ class WordsAdapter(
 ) : RecyclerView.Adapter<WordsAdapter.ViewHolder>(), TextToSpeech.OnInitListener {
     private lateinit var tts: TextToSpeech
     private var context: android.content.Context? = null
+    private var currentLanguage: Locale = Locale.US //
 
 
 
@@ -50,7 +52,7 @@ class WordsAdapter(
             tvSentence.text = item.sentence
             tvSentenceTurkish.text = item.turkishSentence
             imgCountry.setImageResource(resourceIdCountry)
-            // ivSpeech tıklanınca İngilizce kelimeyi seslendir
+            setTextToSpeechLanguage(item.language)
             ivSpeech.setOnClickListener {
                 speakOut(item.word)
             }
@@ -82,29 +84,30 @@ class WordsAdapter(
             notifyItemRemoved(position)
         }
     }
-    // TTS motoru başlatıldıktan sonra dil ayarlarını yapıyoruz
+
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
-            // İngilizce dilini ayarlıyoruz
             val result = tts.setLanguage(Locale.US)
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                println("TTS: Dil desteklenmiyor.")
+                Toast.makeText(context, "Dil desteklenmiyor.", Toast.LENGTH_SHORT).show()
             }
         } else {
-            println("TTS motoru başlatılamadı.")
+            Toast.makeText(context, "TTS motoru başlatılamadı.", Toast.LENGTH_SHORT).show()
         }
     }
-    // TTS ile kelimeyi seslendiren fonksiyon
+
     private fun speakOut(text: String) {
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
     }
 
-    // Adaptör kapanırken TTS motorunu serbest bırakıyoruz
-    fun shutdownTTS() {
-        if (::tts.isInitialized) {
-            tts.stop()
-            tts.shutdown()
+    private fun setTextToSpeechLanguage(language: String) {
+        currentLanguage = when (language) {
+            "English" -> Locale.US
+            "Deutsch" -> Locale.GERMANY
+            "Français" -> Locale.FRANCE
+            "Español" -> Locale("es", "ES")
+            else -> Locale.US
         }
+        tts.language = currentLanguage
     }
-
 }
