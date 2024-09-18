@@ -9,7 +9,7 @@
     <string name="welcome_desc_text">Cardingo ile birbirinden farklı dillerde kelimeler öğrenebilirsiniz.</string>
     <string name="tabb_desc_text">Uygulamanın açılış ekranında dil seçimi ve ardından gelecek olan ekranda hangi seviyede kelimeleri görmek istediğinizi seçebilirsiniz.</string>
     <string name="lets_start_text">Haydi Başlayalım</string>
-    <string name="tabc_desc_text">Öğrendiğiniz kelimenin üzerine tıklayarak açılan pencereden Learn butonuna basarak kelimeyi kaydedebilir ve daha sonra kaydettiğiniz kelimeye erişebilirsiniz</string>
+    <string name="tabc_desc_text">Öğrendiğiniz kelimeleri kaydedebilir ve daha sonradan kaydettiğiniz kelimelere erişebilirsiniz.</string>
     <string name="english_uk_text">English (UK)</string>
     <string name="german_text">German</string>
     <string name="french_text">French</string>
