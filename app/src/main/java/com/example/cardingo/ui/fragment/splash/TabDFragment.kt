@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.cardingo.R
-import com.example.cardingo.databinding.FragmentTabCBinding
+import com.example.cardingo.databinding.FragmentTabDBinding
 
 
-class TabCFragment : Fragment() {
-    private lateinit var binding : FragmentTabCBinding
-
+class TabDFragment : Fragment() {
+    private lateinit var binding: FragmentTabDBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTabCBinding.inflate(inflater, container, false)
-
+        binding = FragmentTabDBinding.inflate(inflater, container, false)
+        binding.button.setOnClickListener {
+            findNavController().navigate(R.id.action_splashFragment_to_chooseLanguageFragment)
+        }
         return binding.root
     }
-
 
 }

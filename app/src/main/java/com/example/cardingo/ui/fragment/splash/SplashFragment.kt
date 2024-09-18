@@ -30,7 +30,7 @@ class SplashFragment : Fragment() {
     }
 
     private val fragmentList = arrayListOf(
-        TabAFragment(), TabBFragment(), TabCFragment()
+        TabAFragment(), TabBFragment(), TabCFragment(),TabDFragment()
     )
     private fun initViewPagerAdapter(){
         // Adapter init
