@@ -1,5 +1,6 @@
 package com.example.cardingo.ui.fragment.splash
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,10 @@ class TabDFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentTabDBinding.inflate(inflater, container, false)
+        // Tanıtım ekranlarının görüldüğünü kaydediyoruz
+        val sharedPreferences = requireActivity().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putBoolean("isIntroSeen", true).apply()
+
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.action_splashFragment_to_chooseLanguageFragment)
         }
