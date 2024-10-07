@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F9FA"
     tools:context=".MainActivity">
 
 
@@ -32,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_margin="4dp"
-                android:background="#77a9d7"
+                android:background="@drawable/rounded_bottom_nav"
                 android:visibility="gone"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/bottom_nav_menu" />
