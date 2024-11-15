@@ -1,8 +1,3 @@
-# Cardingo
-This project has been designed by Gökhan Öztürk for the purpose of helping students in the KeKoD community to develop themselves.
-
-# Destek 
-Projeye katkılarından dolayı Umut Diler'e teşekkürler. 
 
 ## Intro
 <img src="https://github.com/user-attachments/assets/395cc8a1-97fb-464e-b15b-3f731d4fda7b" width="300"> <img src="https://github.com/user-attachments/assets/0fd193d9-59af-4a3b-9c3f-ea10f3197d34" width="300"> <img src="https://github.com/user-attachments/assets/822e431e-1979-46b4-8a81-2cec45cdb136" width="300"> 
